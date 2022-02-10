@@ -1,0 +1,38 @@
+#infinispan:
+#  remote:
+#    server-list: 127.0.0.1:11222
+#    client_intelligence: BASIC
+#    marshaller: org.infinispan.commons.marshall.JavaSerializationMarshaller
+#    auth_realm: default
+#    auth_username: maziar
+#    auth_password:
+#    use_auth: true
+#    sasl_mechanism: DIGEST-MD5
+#    java_serial_allowlist: "org.infinispan.*"
+#    near-cache-mode: INVALIDATED
+#    near-cache-max-entries: 10
+#    near-cache-cache-name-pattern: i8n-.*
+spring:
+  cache:
+    type: hazelcast
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+  jpa:
+    show-sql=: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        cache:
+          use_second_level_cache: true
+          use_query_cache: true
+          region:
+            factory_class: infinispan
+        format_sql: true
+        generate_statistics: true
+        show-sql: true
+server:
+  port: 8098
+
