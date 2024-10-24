@@ -11,10 +11,10 @@
 #    java_serial_allowlist: "org.infinispan.*"
 #    near-cache-mode: INVALIDATED
 #    near-cache-max-entries: 10
-#    near-cache-cache-name-pattern: i8n-.*
+#    near-cache-cache-name-pattern: my-cache
 spring:
   cache:
-    type: hazelcast
+    type: infinispan
   jackson:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
@@ -26,6 +26,11 @@ spring:
     properties:
       hibernate:
         cache:
+          infinispan:
+            statistics: true
+            #            cfg: infinispan.xml
+            query:
+              cfg: distributed-query
           use_second_level_cache: true
           use_query_cache: true
           region:
@@ -35,4 +40,3 @@ spring:
         show-sql: true
 server:
   port: 8098
-

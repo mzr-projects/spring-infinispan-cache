@@ -1,4 +1,4 @@
-package com.mt.springinfinispancache;
+package com.mt.springinfinispancache.controllers;
 
 import com.mt.springinfinispancache.entities.UserDemo;
 import com.mt.springinfinispancache.services.UserService;
